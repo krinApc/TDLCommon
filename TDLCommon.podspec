@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
-  # s.dependency "JSONKit", "~> 1.4"
+  s.dependency "AFNetworking"
+  s.dependency "UIAlertView+Blocks"
 
 end
