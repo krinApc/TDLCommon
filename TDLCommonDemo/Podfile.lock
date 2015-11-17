@@ -2,11 +2,16 @@ PODS:
   - TDLCommon (0.0.1)
 
 DEPENDENCIES:
-  - TDLCommon (from `..`)
+  - TDLCommon (from `https://github.com/krinApc/TDLCommon.git`)
 
 EXTERNAL SOURCES:
   TDLCommon:
-    :path: ".."
+    :git: https://github.com/krinApc/TDLCommon.git
+
+CHECKOUT OPTIONS:
+  TDLCommon:
+    :commit: 7ef39c6e1a46d220ffcab32bd4515fa1e29c638e
+    :git: https://github.com/krinApc/TDLCommon.git
 
 SPEC CHECKSUMS:
   TDLCommon: f40500776ef187fa2110895d4281d054fefd3677

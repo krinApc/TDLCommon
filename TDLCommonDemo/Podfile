@@ -1,2 +1,2 @@
 platform :ios, '7.0'
-pod 'TDLCommon' , :path => '..'
+pod 'TDLCommon' , :git => 'https://github.com/krinApc/TDLCommon.git'
