@@ -43,12 +43,12 @@
         
         [buttons enumerateObjectsUsingBlock:^(NSString *buttonName, NSUInteger idx, BOOL *stop) {
             [alertController addAction:[UIAlertAction actionWithTitle:buttonName style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-                if (completion) completion(YES, idx+1);
+                if (completion) completion(YES, idx);
             }]];
         }];
         
         [alertController addAction:[UIAlertAction actionWithTitle:cancelButton style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-            if (completion) completion(YES, 0);
+            if (completion) completion(YES, buttons.count);
         }]];
         
         [viewController presentViewController:alertController animated:YES completion:nil];
