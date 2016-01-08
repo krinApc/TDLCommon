@@ -8,44 +8,22 @@
 
 #import "TDLAlertView.h"
 #import "UIAlertView+Blocks.h"
+#import "TDLSystem.h"
 
 @implementation TDLAlertView
 
-+ (UIViewController*)getLastestViewController {
-    UIViewController *rootViewController=[UIApplication sharedApplication].delegate.window.rootViewController;
-    
-    UIViewController *viewController = rootViewController;
-    
-    while (viewController != nil) {
-        
-        UIViewController *nowViewController = viewController.presentedViewController;
-        
-        if(nowViewController == nil) {
-            break;
-        }
-        
-        viewController = nowViewController;
-    }
-    
-    return viewController;
-}
-
-+ (float)getIosVersion {
-    return [[[UIDevice currentDevice] systemVersion] floatValue];
-}
-
 #pragma mark -- Alert with only confirm button
 + (void)showPromptAlertWithTitle:(NSString*) title message:(NSString*) message completion:(void (^)(BOOL completed)) completion {
-    if ([self getIosVersion] >= 8.0) {
+    if ([TDLSystem getIosVersion] >= 8.0) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         
         [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"確定", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             if (completion) completion(YES);
         }]];
         
-        UIViewController *viewController = [self getLastestViewController];
-        [viewController presentViewController:alertController animated:YES completion:nil];
-        
+        [TDLSystem getLastestViewController:^(UIViewController *lastestviewController) {
+            [lastestviewController presentViewController:alertController animated:YES completion:nil];
+        }];
     } else {
         [UIAlertView showWithTitle:title
                            message:message
@@ -59,7 +37,7 @@
 
 #pragma mark -- Alert with choosen
 + (void)showDetermineAlertWithTitle:(NSString*) title message:(NSString*) message completion:(void (^)(BOOL completed, BOOL agreed)) completion {
-    if ([self getIosVersion] >= 8.0) {
+    if ([TDLSystem getIosVersion] >= 8.0) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         
         [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"いいえ", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -70,8 +48,9 @@
             if (completion) completion(YES, YES);
         }]];
         
-        UIViewController *viewController = [self getLastestViewController];
-        [viewController presentViewController:alertController animated:YES completion:nil];
+        [TDLSystem getLastestViewController:^(UIViewController *lastestviewController) {
+            [lastestviewController presentViewController:alertController animated:YES completion:nil];
+        }];
     } else {
         [UIAlertView showWithTitle:title
                            message:message
@@ -90,7 +69,7 @@
 #pragma mark -- Alert with arguments
 + (void)showArgumentAlertWithTitle:(NSString*) title message:(NSString*) message completion:(void (^)(BOOL completed, NSInteger buttonIndex)) completion cancelButton:(NSString*) cancelButton buttons:(NSArray*) buttons {
     
-    if ([self getIosVersion] >= 8.0) {
+    if ([TDLSystem getIosVersion] >= 8.0) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         
         [alertController addAction:[UIAlertAction actionWithTitle:cancelButton style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -103,8 +82,9 @@
             }]];
         }];
         
-        UIViewController *viewController = [self getLastestViewController];
-        [viewController presentViewController:alertController animated:YES completion:nil];
+        [TDLSystem getLastestViewController:^(UIViewController *lastestviewController) {
+            [lastestviewController presentViewController:alertController animated:YES completion:nil];
+        }];
     } else {
         [UIAlertView showWithTitle:title
                            message:message
