@@ -10,6 +10,14 @@
 
 @implementation TDLPlist
 
++ (id)getPlistArgumentInfoWithResource:(NSString*)resource key:(NSString*) key {
+    NSBundle* bundle = [NSBundle mainBundle];
+    NSString* path = [bundle pathForResource:resource ofType:@"plist"];
+    NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:path];
+    
+    return [dic objectForKey:key];
+}
+
 + (NSDictionary*)getPlistDicInfoWithResource:(NSString*)resource key:(NSString*) key {
     NSBundle* bundle = [NSBundle mainBundle];
     NSString* path = [bundle pathForResource:resource ofType:@"plist"];

@@ -10,6 +10,7 @@
 
 @interface TDLPlist : NSObject
 
++ (id)getPlistArgumentInfoWithResource:(NSString*)resource key:(NSString*) key;
 + (NSDictionary*)getPlistDicInfoWithResource:(NSString*)resource key:(NSString*) key;
 + (NSArray*)getPlistArrayInfoWithResource:(NSString*)resource key:(NSString*) key;
 + (NSString*)getPlistStringInfoWithResource:(NSString*)resource key:(NSString*) key;
