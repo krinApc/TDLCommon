@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "TDLCommon"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "Some common classes created by TDL."
   s.homepage     = "https://github.com/krinApc/TDLCommon"
   s.license      = "MIT"
