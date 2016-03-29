@@ -17,7 +17,7 @@
     if ([TDLSystem getIosVersion] >= 8.0) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
         
-        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"確定", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             if (completion) completion(YES);
         }]];
         
@@ -27,7 +27,7 @@
     } else {
         [UIAlertView showWithTitle:title
                            message:message
-                 cancelButtonTitle:NSLocalizedString(@"確定", nil)
+                 cancelButtonTitle:NSLocalizedString(@"OK", nil)
                  otherButtonTitles:nil
                           tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                               if (completion) completion(YES);
