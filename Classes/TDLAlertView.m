@@ -88,7 +88,7 @@
     } else {
         [UIAlertView showWithTitle:title
                            message:message
-                 cancelButtonTitle:NSLocalizedString(@"ALERT_NO", nil)
+                 cancelButtonTitle:NSLocalizedString(@"閉じる", nil)
                  otherButtonTitles:buttons
                           tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
                               if (completion) completion(YES, buttonIndex);
